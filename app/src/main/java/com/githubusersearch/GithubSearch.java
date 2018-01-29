@@ -1,9 +1,9 @@
-package com.github_android_master;
+package com.githubusersearch;
 
 import android.app.Application;
 
-import com.github_android_master.di.AppComponent;
-import com.github_android_master.di.DaggerAppComponent;
+import com.githubusersearch.di.AppComponent;
+import com.githubusersearch.di.DaggerAppComponent;
 
 /**
  * Created by ankit on 29/01/18.

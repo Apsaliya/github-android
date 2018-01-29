@@ -1,10 +1,10 @@
-package com.github_android_master.di;
+package com.githubusersearch.di;
 
 import android.arch.lifecycle.ViewModelProvider;
 
-import com.github_android_master.network.GithubService;
-import com.github_android_master.network.NetworkConstants;
-import com.github_android_master.viewmodel.ViewModelFactory;
+import com.githubusersearch.network.GithubService;
+import com.githubusersearch.network.NetworkConstants;
+import com.githubusersearch.viewmodel.ViewModelFactory;
 
 import javax.inject.Singleton;
 

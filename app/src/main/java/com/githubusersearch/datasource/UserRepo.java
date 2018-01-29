@@ -1,6 +1,6 @@
-package com.github_android_master.datasource;
+package com.githubusersearch.datasource;
 
-import com.github_android_master.datasource.remotedatasource.RemoteDataSource;
+import com.githubusersearch.datasource.remotedatasource.RemoteDataSource;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

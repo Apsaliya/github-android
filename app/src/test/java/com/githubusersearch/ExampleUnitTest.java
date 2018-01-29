@@ -1,4 +1,4 @@
-package com.github_android_master;
+package com.githubusersearch;
 
 import org.junit.Test;
 

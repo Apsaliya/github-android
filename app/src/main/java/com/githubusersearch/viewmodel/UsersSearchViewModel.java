@@ -1,10 +1,14 @@
-package com.github_android_master.viewmodel;
+package com.githubusersearch.viewmodel;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.github_android_master.datasource.UserRepo;
+import com.githubusersearch.datasource.UserRepo;
+import com.githubusersearch.network.model.User;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -16,6 +20,7 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public class UsersSearchViewModel extends AndroidViewModel {
     private UserRepo userRepo;
+    public final MutableLiveData<List<User>> contactListLiveData = new MutableLiveData<>();
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Inject

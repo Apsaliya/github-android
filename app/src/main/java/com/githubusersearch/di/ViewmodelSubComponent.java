@@ -1,6 +1,6 @@
-package com.github_android_master.di;
+package com.githubusersearch.di;
 
-import com.github_android_master.viewmodel.UsersSearchViewModel;
+import com.githubusersearch.viewmodel.UsersSearchViewModel;
 
 import dagger.Subcomponent;
 

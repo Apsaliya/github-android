@@ -1,11 +1,11 @@
-package com.github_android_master.viewmodel;
+package com.githubusersearch.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 import android.support.v4.util.ArrayMap;
 
-import com.github_android_master.di.ViewmodelSubComponent;
+import com.githubusersearch.di.ViewmodelSubComponent;
 
 import java.util.Map;
 import java.util.concurrent.Callable;

@@ -1,9 +1,9 @@
-package com.github_android_master.di;
+package com.githubusersearch.di;
 
 import android.app.Application;
 
-import com.github_android_master.GithubSearch;
-import com.github_android_master.SearchActivity;
+import com.githubusersearch.GithubSearch;
+import com.githubusersearch.view.ui.SearchActivity;
 
 import javax.inject.Singleton;
 
