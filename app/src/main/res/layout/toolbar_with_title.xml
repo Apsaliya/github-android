@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/toolbar_height"
+    android:background="@color/colorPrimary"
+    app:contentInsetEnd="@dimen/size_0_dp"
+    app:contentInsetLeft="@dimen/size_0_dp"
+    app:contentInsetRight="@dimen/size_0_dp"
+    app:contentInsetStart="@dimen/size_0_dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:animateLayoutChanges="true">
+
+        <RelativeLayout
+            android:id="@+id/search_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:visibility="visible">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/searchbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="@dimen/activity_margin_8dp"
+                android:layout_marginStart="@dimen/activity_margin_8dp"
+                android:layout_toStartOf="@+id/clear_search"
+                android:paddingLeft="@dimen/activity_padding"
+                android:paddingRight="@dimen/activity_padding"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:visibility="visible"
+                app:backgroundTint="@color/white" />
+
+            <ImageView
+                android:id="@+id/clear_search"
+                android:layout_width="@dimen/imageview_width"
+                android:layout_height="@dimen/imageview_height"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/margin_bottom"
+
+                android:layout_marginEnd="@dimen/activity_margin"
+                android:src="@drawable/clear_material" />
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.v7.widget.Toolbar>

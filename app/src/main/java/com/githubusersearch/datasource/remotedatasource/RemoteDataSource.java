@@ -3,6 +3,7 @@ package com.githubusersearch.datasource.remotedatasource;
 import com.githubusersearch.datasource.DataSource;
 import com.githubusersearch.network.GithubService;
 import com.githubusersearch.network.model.User;
+import com.githubusersearch.network.model.UserResponse;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public Single<List<User>> getUsersList() {
-        return null;
+    public Single<UserResponse> getUsersList(String text) {
+        return githubService.getContactList(text, "followers");
     }
 }

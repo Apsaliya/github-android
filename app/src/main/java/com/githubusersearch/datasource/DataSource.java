@@ -1,6 +1,7 @@
 package com.githubusersearch.datasource;
 
 import com.githubusersearch.network.model.User;
+import com.githubusersearch.network.model.UserResponse;
 
 import java.util.List;
 
@@ -13,5 +14,5 @@ import retrofit2.http.GET;
 
 public interface DataSource {
     @GET("/users/search")
-    Single<List<User>> getUsersList();
+    Single<UserResponse> getUsersList(String text);
 }

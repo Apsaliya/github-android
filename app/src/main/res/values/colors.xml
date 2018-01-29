@@ -9,4 +9,5 @@
     <color name="color_v4_disabled">#9E9E9E</color>
     <color name="white">#FFFFFF</color>
     <color name="color_divider_v4">#E0E0E0</color>
+    <color name="shimmer_loader_color">#FBE7E7</color>
 </resources>

@@ -80,6 +80,13 @@ dependencies {
 
     //spinkit
     implementation "com.github.ybq:Android-SpinKit:$project.spinkit"
+
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+
+    compile 'com.github.bumptech.glide:glide:4.4.0'
+
+    compile 'com.facebook.shimmer:shimmer:0.1.0@aar'
+
 }
 repositories {
     mavenCentral()

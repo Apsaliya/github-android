@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Fonts -->
+    <dimen name="font_size_button">20sp</dimen>
+    <dimen name="font_size_button_small">15sp</dimen>
+    <dimen name="font_size_text_xxl">24sp</dimen>
+    <dimen name="font_size_text_xl">22sp</dimen>
+    <dimen name="font_size_text_large">18sp</dimen>
     <dimen name="font_size_text">14sp</dimen>
+    <dimen name="font_size_text_medium">16sp</dimen>
     <dimen name="font_size_text_small">12sp</dimen>
     <dimen name="font_size_text_verysmall">10sp</dimen>
+    <dimen name="font_size_text_tiny">8sp</dimen>
+    <dimen name="font_size_input_text">20sp</dimen>
+    <dimen name="font_size_edit_text">16sp</dimen> <!--Should be used for ever EDitText-->
+
+    <dimen name="button_radius">8dp</dimen>
+    <dimen name="progressbar_height">24dp</dimen>
+    <dimen name="progressbar_width">24dp</dimen>
+    <dimen name="imageview_height">24dp</dimen>
+    <dimen name="imageview_width">24dp</dimen>
+
+    <dimen name="margin_bottom">12dp</dimen>
+    <dimen name="error_imageview_width">36dp</dimen>
+    <dimen name="error_imageview_height">36dp</dimen>
+
+    <dimen name="size_20_dp">20dp</dimen>
+    <dimen name="size_0_dp">0dp</dimen>
+    <dimen name="size_40_dp">20dp</dimen>
+
+    <dimen name="editor_abs_y">435dp</dimen>
+    <dimen name="editor_abs_x">8dp</dimen>
+
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="activity_margin">16dp</dimen>
+    <dimen name="activity_margin_8dp">8dp</dimen>
+    <dimen name="activity_padding">16dp</dimen>
+
 </resources>
