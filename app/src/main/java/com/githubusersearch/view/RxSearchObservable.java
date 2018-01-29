@@ -5,6 +5,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 
+import com.jakewharton.rxrelay2.PublishRelay;
+
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.subjects.PublishSubject;
@@ -16,7 +18,7 @@ import io.reactivex.subjects.PublishSubject;
 public class RxSearchObservable {
     public static Flowable<String> fromView(EditText searchView) {
 
-        final PublishSubject<String> subject = PublishSubject.create();
+        final PublishRelay<String> relay = PublishRelay.create();
 
         searchView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -28,7 +30,8 @@ public class RxSearchObservable {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 Log.d("onTextChanged", s +  "");
                 if (s != null) {
-                    subject.onNext(s.toString());
+                    relay.accept(s.toString());
+                    //subject.onNext(s.toString());
                 }
             }
 
@@ -38,6 +41,6 @@ public class RxSearchObservable {
             }
         });
 
-        return subject.toFlowable(BackpressureStrategy.BUFFER);
+        return relay.toFlowable(BackpressureStrategy.BUFFER);
     }
 }

@@ -22,6 +22,7 @@
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:layout_gravity="center"
+            android:visibility="gone"
             app:SpinKit_Color="@color/colorPrimary" />
 
         <android.support.v7.widget.RecyclerView

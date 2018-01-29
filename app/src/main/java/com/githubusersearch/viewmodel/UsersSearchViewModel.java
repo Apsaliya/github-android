@@ -10,15 +10,19 @@ import android.util.Log;
 import com.githubusersearch.datasource.UserRepo;
 import com.githubusersearch.network.model.User;
 import com.githubusersearch.network.model.UserResponse;
+import com.githubusersearch.view.ui.States;
 
 import org.reactivestreams.Publisher;
+import org.reactivestreams.Subscription;
 
+import java.io.InterruptedIOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
 import io.reactivex.Flowable;
+import io.reactivex.Notification;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.BiPredicate;
@@ -33,7 +37,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UsersSearchViewModel extends AndroidViewModel {
     private UserRepo userRepo;
+    private States states = new States();
     public final MutableLiveData<List<User>> userListLiveData = new MutableLiveData<>();
+    public final MutableLiveData<States> statesLiveData = new MutableLiveData<>();
+
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Inject
@@ -59,16 +66,33 @@ public class UsersSearchViewModel extends AndroidViewModel {
                     Log.d("test", text1 + "   " + text2);
                     return text1.equalsIgnoreCase(text2);
                 })
-                .switchMap(text -> {
+                .flatMap(text -> {
                     Log.d("apply", text + "");
                     return userRepo.searchUsers(text);
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(result -> userListLiveData.setValue(result.getItems()), new Consumer<Throwable>() {
+                /*.onErrorReturn(throwable -> {
+                    states.setState(States.ERROR);
+                    states.setErrorThrowable(throwable);
+                    statesLiveData.setValue(states);
+                    return new UserResponse(null, null, null);
+                })*/
+                .doOnComplete(() -> {
+                    states.setState(States.LOADING_FINISHED);
+                    statesLiveData.setValue(states);
+                })
+                .subscribe(result -> {
+                    if (result.getItems() != null) {
+                        userListLiveData.setValue(result.getItems());
+                    }
+                }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         throwable.printStackTrace();
+                        states.setState(States.ERROR);
+                        states.setErrorThrowable(throwable);
+                        statesLiveData.setValue(states);
                     }
                 }));
     }

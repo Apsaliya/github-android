@@ -6,6 +6,8 @@ import com.githubusersearch.network.GithubService;
 import com.githubusersearch.network.NetworkConstants;
 import com.githubusersearch.viewmodel.ViewModelFactory;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -31,6 +33,8 @@ public class AppModule {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder();
+        okHttpBuilder = okHttpBuilder.readTimeout(25, TimeUnit.SECONDS);
+
 
         okHttpBuilder.addInterceptor(chain -> {
             Request original = chain.request();

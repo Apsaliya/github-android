@@ -32,6 +32,8 @@
                 android:paddingLeft="@dimen/activity_padding"
                 android:paddingRight="@dimen/activity_padding"
                 android:singleLine="true"
+                android:hint="@string/search_hint"
+                android:textColorHint="@color/white"
                 android:textColor="@color/white"
                 android:visibility="visible"
                 app:backgroundTint="@color/white" />
