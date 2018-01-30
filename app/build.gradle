@@ -12,6 +12,10 @@ project.ext {
     rxandroid = "2.0.1"
     butterknife = "8.8.1"
     spinkit = "1.1.0"
+    loggin_interceptor = "3.8.0"
+    glide = "4.4.0"
+    shimmer = "0.1.0"
+    rxrelay = "2.0.0"
 }
 
 
@@ -67,7 +71,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$project.retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$project.retrofit"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$project.retrofit"
-
+    debugImplementation "com.squareup.okhttp3:logging-interceptor:$project.loggin_interceptor"
 
     //rxjava
     implementation "io.reactivex.rxjava2:rxjava:$project.rxjava"
@@ -82,13 +86,14 @@ dependencies {
     //spinkit
     implementation "com.github.ybq:Android-SpinKit:$project.spinkit"
 
-    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    //glide
+    implementation "com.github.bumptech.glide:glide:$project.glide"
 
-    compile 'com.github.bumptech.glide:glide:4.4.0'
+    //shimmer
+    implementation "com.facebook.shimmer:shimmer:$project.shimmer@aar"
 
-    compile 'com.facebook.shimmer:shimmer:0.1.0@aar'
-
-    compile 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
+    //RxRelay
+    implementation "com.jakewharton.rxrelay2:rxrelay:$project.rxrelay"
 }
 repositories {
     mavenCentral()
