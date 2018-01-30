@@ -25,11 +25,13 @@ import io.reactivex.Flowable;
 import io.reactivex.Notification;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiPredicate;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subscribers.DisposableSubscriber;
 
 /**
  * Created by ankit on 29/01/18.
@@ -58,32 +60,23 @@ public class UsersSearchViewModel extends AndroidViewModel {
     public void search(Flowable<String> sequenceFlowable) {
         compositeDisposable.add(sequenceFlowable
                 .debounce(300, TimeUnit.MILLISECONDS)
-                .filter(text -> {
-                    Log.d("test", text + "");
-                    return !TextUtils.isEmpty(text);
-                })
-                .distinctUntilChanged((text1, text2) -> {
-                    Log.d("test", text1 + "   " + text2);
-                    return text1.equalsIgnoreCase(text2);
-                })
-                .flatMap(text -> {
-                    Log.d("apply", text + "");
-                    return userRepo.searchUsers(text);
-                })
+                .filter(text -> !TextUtils.isEmpty(text))
+                .distinctUntilChanged(String::equalsIgnoreCase)
                 .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.newThread())
+                .switchMap(text -> userRepo.searchUsers(text))
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnComplete(() -> {
                     states.setState(States.LOADING_FINISHED);
                     statesLiveData.setValue(states);
                 })
-                .subscribe(result -> {
-                    if (result.getItems() != null) {
-                        userListLiveData.setValue(result.getItems());
+                .subscribe(userResponse -> {
+                    if (userResponse != null && userResponse.getItems() != null) {
+                        userListLiveData.setValue(userResponse.getItems());
                     }
                 }, throwable -> {
-                    throwable.printStackTrace();
                     states.setState(States.ERROR);
-                    states.setErrorThrowable(throwable);
                     statesLiveData.setValue(states);
                 }));
     }

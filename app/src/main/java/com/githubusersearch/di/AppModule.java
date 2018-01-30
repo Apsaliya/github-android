@@ -34,7 +34,8 @@ public class AppModule {
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder();
         okHttpBuilder = okHttpBuilder.readTimeout(25, TimeUnit.SECONDS);
-
+        okHttpBuilder = okHttpBuilder.writeTimeout(25, TimeUnit.SECONDS);
+        okHttpBuilder = okHttpBuilder.connectTimeout(25, TimeUnit.SECONDS);
 
         okHttpBuilder.addInterceptor(chain -> {
             Request original = chain.request();
